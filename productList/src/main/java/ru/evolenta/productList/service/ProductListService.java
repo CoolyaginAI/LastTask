@@ -35,6 +35,7 @@ public class ProductListService {
         productListRepository.findById(id).get().setStatus(productList.getStatus());
         productListRepository.findById(id).get().setProductListMap(productList.getProductListMap());
         productListRepository.findById(id).get().setIdPerson(productList.getIdPerson());
+        productListRepository.save(productListRepository.findById(id).get());
     }
 
     public void deleteProductListById(int idProductList) {

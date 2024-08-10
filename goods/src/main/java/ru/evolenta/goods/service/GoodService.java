@@ -35,6 +35,7 @@ public class GoodService {
         goodRepository.findById(id).get().setDescriptionGood(good.getDescriptionGood());
         goodRepository.findById(id).get().setCost(good.getCost());
         goodRepository.findById(id).get().setAmount(good.getAmount());
+        goodRepository.save(goodRepository.findById(id).get());
     }
 
     public void deleteGoodById(int id) {

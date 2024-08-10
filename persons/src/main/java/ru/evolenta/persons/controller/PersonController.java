@@ -24,7 +24,7 @@ public class PersonController {
         return personService.getPerson();
     }
 
-    @GetMapping("/person/{id}")
+    @GetMapping("/person/{idPerson}")
     public Optional<Person> getPersonById(@PathVariable int idPerson) {
         return personService.getPersonById(idPerson);
     }
@@ -34,7 +34,7 @@ public class PersonController {
         return personService.addPerson(person);
     }
 
-    @PutMapping("/person/{id}")
+    @PutMapping("/person/{idPerson}")
     public HttpStatus uptadePerson(@PathVariable int idPerson, @RequestBody Person person) {
 
         HttpStatus status = personService.existPersonById(idPerson)
@@ -47,7 +47,7 @@ public class PersonController {
         return status;
     }
 
-    @DeleteMapping("/person/{id}")
+    @DeleteMapping("/person/{idPerson}")
     public HttpStatus deletePerson(@PathVariable int idPerson) {
 
         HttpStatus status = personService.existPersonById(idPerson)

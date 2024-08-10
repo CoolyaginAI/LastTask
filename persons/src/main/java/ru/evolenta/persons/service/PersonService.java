@@ -36,6 +36,7 @@ public class PersonService {
         personRepository.findById(idPerson).get().setLastName(person.getLastName());
         personRepository.findById(idPerson).get().setBithday(person.getBithday());
         personRepository.findById(idPerson).get().setAdress(person.getAdress());
+        personRepository.save(personRepository.findById(idPerson).get());
     }
 
     public void deletePersonById(int idPerson) {
