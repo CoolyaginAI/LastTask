@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 import lombok.NonNull;
 
 import java.util.Date;
-import java.util.Map;
+import java.util.HashMap;
 
 @Entity
 @NoArgsConstructor
@@ -23,12 +23,12 @@ public class ProductList {
     @NonNull Date dateProductList; // Дата заказа
     @NonNull String status; // Статус заказа -> "В пути"/"Доставлен"
     @NonNull int idPerson; // id Пользователя офрмившего заказ
-    @NonNull Map<Integer, Integer> productListMap; // Для хранения <номер товара, количество товара> в заказе
+    @NonNull HashMap<Integer, Integer> productListMap; // Для хранения <номер товара, количество товара> в заказе
 
     public ProductList(@NonNull Date dateProductList,
                  @NonNull String status,
                  @NonNull int idPerson,
-                 @NonNull Map<Integer, Integer> productListMap) {
+                 @NonNull HashMap<Integer, Integer> productListMap) {
         this.dateProductList = dateProductList;
         this.status = status;
         this.idPerson = idPerson;
