@@ -20,19 +20,19 @@ public class ProductList {
     @Id @GeneratedValue
     private int id;
 
-    @NonNull Date dateOrder; // Дата заказа
+    @NonNull Date dateProductList; // Дата заказа
     @NonNull String status; // Статус заказа -> "В пути"/"Доставлен"
-    @NonNull int idUser; // id Пользователя офрмившего заказ
-    @NonNull Map<Integer, Integer> orderMap; // Для хранения <номер товара, количество товара> в заказе
+    @NonNull int idPerson; // id Пользователя офрмившего заказ
+    @NonNull Map<Integer, Integer> productListMap; // Для хранения <номер товара, количество товара> в заказе
 
-    public ProductList(@NonNull Date dateOrder,
+    public ProductList(@NonNull Date dateProductList,
                  @NonNull String status,
-                 @NonNull int idUser,
-                 @NonNull Map<Integer, Integer> orderMap) {
-        this.dateOrder = dateOrder;
+                 @NonNull int idPerson,
+                 @NonNull Map<Integer, Integer> productListMap) {
+        this.dateProductList = dateProductList;
         this.status = status;
-        this.idUser = idUser;
-        this.orderMap = orderMap;
+        this.idPerson = idPerson;
+        this.productListMap = productListMap;
     }
 
 }
