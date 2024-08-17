@@ -70,10 +70,8 @@ public class ProductListService {
         tempHashMap.put(idGood,idAmount);
 
         ProductList productList = new ProductList(
-                new Date(),
-                "В пути",
-                idPerson,
-                tempHashMap
+                new Date(),"В пути",
+                idPerson, tempHashMap
         );
 
         productListRepository.save(productList);
