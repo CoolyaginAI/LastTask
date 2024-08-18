@@ -13,23 +13,33 @@ public class PersonService {
     @Autowired
     private PersonRepository personRepository;
 
+
+    // Получение всех пользователей
     public Iterable<Person> getPerson() {
         return personRepository.findAll();
     }
 
+
+    // Получение конкретного пользователя по его id
     public Optional<Person> getPersonById(int idPerson) {
         return personRepository.findById(idPerson);
     }
 
+
+    // Добавление пользователя
     public Person addPerson(Person person) {
         personRepository.save(person);
         return person;
     }
 
+
+    // Проверка существоания пользователя
     public boolean existPersonById(int idPerson) {
         return personRepository.existsById(idPerson);
     }
 
+
+    // Обновление пользователя
     public void updatePerson(int idPerson, Person person) {
         personRepository.findById(idPerson).get().setFirstName(person.getFirstName());
         personRepository.findById(idPerson).get().setSurName(person.getSurName());
@@ -39,6 +49,8 @@ public class PersonService {
         personRepository.save(personRepository.findById(idPerson).get());
     }
 
+
+    // Удаление пользователя
     public void deletePersonById(int idPerson) {
         personRepository.deleteById(idPerson);
     }

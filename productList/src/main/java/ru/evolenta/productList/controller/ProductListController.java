@@ -12,6 +12,7 @@ import ru.evolenta.productList.model.ProductList;
 import ru.evolenta.productList.service.ProductListService;
 
 
+import java.awt.*;
 import java.util.HashMap;
 import java.util.Optional;
 
@@ -24,12 +25,6 @@ public class ProductListController {
 
     @Autowired
     public RestTemplate restTemplate;
-
-    @Value("${url.person}")
-    String urlPerson;
-
-    @Value("${url.good}")
-    String urlGood;
 
 
     // Просмотр всех заказов
@@ -51,11 +46,11 @@ public class ProductListController {
     @PostMapping("/productlist")
     public ResponseEntity<ProductList> addProductList(@RequestBody ProductList productList) {
 
-        if (existPersonById(productList.getIdPerson())) {
+        if (productListService.existPersonById(productList.getIdPerson())) {
 
             boolean existGoodAndAmount = true;
             for (HashMap.Entry<Integer, Integer> temp: productList.getProductListMap().entrySet()) {
-                if (! existGoodById(temp.getKey(), temp.getValue())) {
+                if (! productListService.existGoodById(temp.getKey(), temp.getValue())) {
                     existGoodAndAmount = false;
                     break;
                 }
@@ -77,11 +72,11 @@ public class ProductListController {
         if (! productListService.existProductListById(idProductList))
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         else {
-            if (existPersonById(productList.getIdPerson())) {
+            if (productListService.existPersonById(productList.getIdPerson())) {
 
                 boolean existGoodAndAmount = true;
                 for (HashMap.Entry<Integer, Integer> temp: productList.getProductListMap().entrySet()) {
-                    if (! existGoodById(temp.getKey(), temp.getValue())) {
+                    if (! productListService.existGoodById(temp.getKey(), temp.getValue())) {
                         existGoodAndAmount = false;
                         break;
                     }
@@ -105,7 +100,8 @@ public class ProductListController {
                                   @PathVariable int idGood,
                                   @PathVariable int idAmount) {
 
-        if (productListService.existProductListById(idProductList) && existGoodById(idGood, idAmount)) {
+        if (productListService.existProductListById(idProductList)
+                && productListService.existGoodById(idGood, idAmount)) {
             productListService.updateProductListAddGood(idProductList, idGood, idAmount);
             return new ResponseEntity<>(
                         productListService.getProductListById(idProductList).get(), HttpStatus.OK);
@@ -120,7 +116,8 @@ public class ProductListController {
                                                @PathVariable int idGood,
                                                @PathVariable int idAmount) {
 
-        if (existPersonById(idPerson) && existGoodById(idGood, idAmount))
+        if (productListService.existPersonById(idPerson)
+                && productListService.existGoodById(idGood, idAmount))
             return new ResponseEntity<>(
                     productListService.addProductListWithPerson(idPerson, idGood, idAmount),
                     HttpStatus.OK);
@@ -144,35 +141,28 @@ public class ProductListController {
     }
 
 
-    // Все заказы у конкретного пользователя
+    // Все заказы у конкретного пользователя с проверкой на существование пользователя
     @GetMapping("/productlist/person/{id}")
     public ResponseEntity<Iterable<ProductList>> getPerson(@PathVariable int id) {
-        if (existPersonById(id))
+        if (productListService.existPersonById(id))
             return new ResponseEntity<>(productListService.getProductListPerson(id),HttpStatus.OK);
          else return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-
-    // Запрос на проверку существования пользователя
-    public boolean existPersonById(int id) {
-        String request = String.format("http://" + urlPerson + "/person/" + id);
-        Optional<Person> person = restTemplate.getForObject(request, Optional.class);
-
-        if (person.isEmpty()) return false;
-        else return true;
+    // Все заказы у конкретного пользователя без проверки
+    // на существование пользователя, для запроса из микросервиса Person
+    @GetMapping("/productlist/personTrue/{id}")
+    public Iterable<ProductList> getPersonTrue(@PathVariable int id) {
+        return productListService.getProductListPerson(id);
     }
 
-
-    // Запрос на проверку существования товара и в необходимом количестве
-    public boolean existGoodById(int idGood, int amount) {
-        String request = String.format("http://" + urlGood + "/good/" + idGood);
-        Optional<Good> good = restTemplate.getForObject(request, Optional.class);
-
-        if (good.isEmpty()) return false;
-        else {
-            if (good.get().getAmount()>=amount) return true;
-                return false;
-        }
+    // Все заказы у конкретного пользователя с проверкой на существование пользователя
+    // в формате id(idProductList), Cost, Amount по каждому заказу
+    @GetMapping("/productlist/short/person/{id}")
+    public List getProductListPersonShort(@PathVariable int id) {
+        List<Integer> list;
+        list = ;
+        return
     }
 
 }
