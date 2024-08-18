@@ -1,20 +1,15 @@
 package ru.evolenta.productList.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
-import ru.evolenta.productList.model.Good;
-import ru.evolenta.productList.model.Person;
 import ru.evolenta.productList.model.ProductList;
 import ru.evolenta.productList.service.ProductListService;
 
 
-import java.awt.*;
-import java.util.HashMap;
-import java.util.Optional;
+import java.util.*;
 
 @RestController
 @RequestMapping
@@ -149,6 +144,7 @@ public class ProductListController {
          else return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
+
     // Все заказы у конкретного пользователя без проверки
     // на существование пользователя, для запроса из микросервиса Person
     @GetMapping("/productlist/personTrue/{id}")
@@ -156,13 +152,14 @@ public class ProductListController {
         return productListService.getProductListPerson(id);
     }
 
+
     // Все заказы у конкретного пользователя с проверкой на существование пользователя
     // в формате id(idProductList), Cost, Amount по каждому заказу
-    @GetMapping("/productlist/short/person/{id}")
-    public List getProductListPersonShort(@PathVariable int id) {
-        List<Integer> list;
-        list = ;
-        return
+    @GetMapping("/productlist/short/person/{idPerson}")
+    public ResponseEntity<Iterable<List>> getProductListPersonShort(@PathVariable int idPerson) {
+        if (productListService.existPersonById(idPerson))
+            return new ResponseEntity<>(productListService.getProductListPersonShort(idPerson),HttpStatus.OK);
+        else return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
 }

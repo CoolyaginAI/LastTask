@@ -37,14 +37,14 @@ public class ProductListService {
     public Iterable<ProductList> getProductListPerson(int idPerson) {
 
         Iterator<ProductList> iterator = productListRepository.findAll().iterator();
-        List<ProductList> iterator2 = new ArrayList<>();
+        List<ProductList> iteratorTemp = new ArrayList<>();
 
         while (iterator.hasNext()) {
             ProductList tempProductList =  iterator.next();
-            if (tempProductList.getIdPerson() == idPerson)  iterator2.add(tempProductList);
+            if (tempProductList.getIdPerson() == idPerson)  iteratorTemp.add(tempProductList);
         }
 
-        return iterator2;
+        return iteratorTemp;
     }
 
 
@@ -106,22 +106,42 @@ public class ProductListService {
     }
 
 
+    // Получить все заказы у конкретного пользователя
+    // в формате id(idProductList), Cost, Amount по каждому заказу
+    public Iterable<List> getProductListPersonShort(int idPerson) {
+
+        Iterator<ProductList> iterator = productListRepository.findAll().iterator();
+        ArrayList<List> arrayList = new ArrayList<>();
+
+        while (iterator.hasNext()) {
+            ProductList tempProductList =  iterator.next();
+            if (tempProductList.getIdPerson() == idPerson)
+                arrayList.add(getCostAndAmountByIdProductList(tempProductList.getId()));
+        }
+
+        return arrayList;
+    }
+
     // Получить стоимость всего заказа по его id(idProductList)
     public Integer getCostByIdProductList(int idProductList) {
 
         Integer costs = 0;
-        HashMap<Integer, Integer> tempHashMap = new HashMap<>();
+
+        HashMap<Integer, Integer> tempHashMap;
         tempHashMap = productListRepository.findById(idProductList).get().getProductListMap();
 
-        for (HashMap.Entry<Integer, Integer> entry : tempHashMap.entrySet())
+        for (HashMap.Entry<Integer, Integer> entry: tempHashMap.entrySet()) {
             costs += costGoodById(entry.getKey())*entry.getValue();
+        }
 
-        return  costs;
+        return costs;
     }
 
 
     // Получить стоимость всего заказа и
     // количество товаров в заказе по его id(idProductList)
+    // возвращяется в виде тройки значений
+    // id заказа, стоимость заказа, количество товара в заказе
     public List<Integer> getCostAndAmountByIdProductList(int idProductList) {
 
         Integer costs = 0;
@@ -132,7 +152,7 @@ public class ProductListService {
 
         for (HashMap.Entry<Integer, Integer> entry : tempHashMap.entrySet()) {
             costs += costGoodById(entry.getKey()) * entry.getValue();
-            amounts++;
+            amounts += entry.getValue();
         }
 
         return List.of(idProductList, costs, amounts);
@@ -142,9 +162,10 @@ public class ProductListService {
     // Запрос на проверку существования пользователя
     public boolean existPersonById(int id) {
         String request = String.format("http://" + urlPerson + "/person/" + id);
-        Optional<Person> person = restTemplate.getForObject(request, Optional.class);
+        Person person = restTemplate.getForObject(request, Person.class);
+        Optional<Person> optionalPerson = Optional.ofNullable(person);
 
-        if (person.isEmpty()) return false;
+        if (optionalPerson.isEmpty()) return false;
         else return true;
     }
 
@@ -152,11 +173,12 @@ public class ProductListService {
     // Запрос на проверку существования товара и в необходимом количестве
     public boolean existGoodById(int idGood, int amount) {
         String request = String.format("http://" + urlGood + "/good/" + idGood);
-        Optional<Good> good = restTemplate.getForObject(request, Optional.class);
+        Good good = restTemplate.getForObject(request, Good.class);
+        Optional<Good> optionalGood= Optional.ofNullable(good);
 
-        if (good.isEmpty()) return false;
+        if (optionalGood.isEmpty()) return false;
         else {
-            if (good.get().getAmount()>=amount) return true;
+            if (good.getAmount()>=amount) return true;
             return false;
         }
     }
@@ -164,11 +186,13 @@ public class ProductListService {
     // Запрос на стоимость за единицу товара,
     // если товара не существует, то возвращяется 0
     public Integer costGoodById(int idGood) {
-        String request = String.format("http://" + urlGood + "/good/" + idGood);
-        Optional<Good> good = restTemplate.getForObject(request, Optional.class);
 
-        if (good.isEmpty()) return 0;
-        else return good.get().getCost();
+        String request = String.format("http://" + urlGood + "/good/" + idGood);
+        Good good = restTemplate.getForObject(request, Good.class);
+        Optional<Good> optionalGood= Optional.ofNullable(good);
+
+        if (optionalGood.isEmpty()) return 0;
+        else return good.getCost();
     }
 
 
