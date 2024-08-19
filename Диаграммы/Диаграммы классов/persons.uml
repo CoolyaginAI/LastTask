@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>C:/Users/KulyaginAI/IdeaProjects/LastTask/persons/src/main/java/ru/evolenta/persons</OriginalElement>
+  <nodes>
+    <node x="414.9861265260822" y="-133.0876803551609">ru.evolenta.persons.model.ProductList</node>
+    <node x="59.0" y="22.29411764705884">ru.evolenta.persons.PersonsApplication</node>
+    <node x="-413.0799112097669" y="146.09378468368482">ru.evolenta.persons.service.PersonService</node>
+    <node x="-230.4267480577136" y="22.29411764705884">ru.evolenta.persons.repository.PersonRepository</node>
+    <node x="425.918423973363" y="360.20754716981116">ru.evolenta.persons.model.Person</node>
+    <node x="-220.5" y="412.5022197558268">ru.evolenta.persons.controller.PersonController</node>
+    <node x="44.5" y="-119.0">ru.evolenta.persons.config.PersonConfig</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="ru.evolenta.persons.controller.PersonController" target="ru.evolenta.persons.service.PersonService" relationship="TO_ONE">
+      <point x="0.0" y="-104.5" />
+      <point x="27.5" y="705.0" />
+      <point x="-271.5799112097669" y="705.0" />
+      <point x="0.0" y="104.5" />
+    </edge>
+    <edge source="ru.evolenta.persons.service.PersonService" target="ru.evolenta.persons.repository.PersonRepository" relationship="TO_ONE">
+      <point x="0.0" y="-104.5" />
+      <point x="-271.5799112097669" y="-50.25" />
+      <point x="-136.9267480577136" y="-50.25" />
+      <point x="0.0" y="14.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Compact" zoom="0.7814397224631396" showDependencies="true" x="276.5" y="327.5" />
+  <SelectedNodes>
+    <node>ru.evolenta.persons.service.PersonService</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Constructors</Category>
+    <Category>Fields</Category>
+    <Category>Inner Classes</Category>
+    <Category>Methods</Category>
+    <Category>Properties</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

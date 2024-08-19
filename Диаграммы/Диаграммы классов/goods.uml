@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>C:/Users/KulyaginAI/IdeaProjects/LastTask/goods/src/main/java/ru/evolenta/goods</OriginalElement>
+  <nodes>
+    <node x="-235.46337402885695" y="490.9217536071033">ru.evolenta.goods.service.GoodService</node>
+    <node x="-206.46836847946724" y="225.86015538290783">ru.evolenta.goods.GoodsApplication</node>
+    <node x="-572.5987791342952" y="318.25305216426193">ru.evolenta.goods.repository.GoodRepository</node>
+    <node x="-630.5394006659267" y="514.9217536071033">ru.evolenta.goods.controller.GoodController</node>
+    <node x="122.16981132075466" y="478.9200887902331">ru.evolenta.goods.model.Good</node>
+    <node x="131.66981132075466" y="299.37291897891225">ru.evolenta.goods.config.GoodConfig</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="ru.evolenta.goods.service.GoodService" target="ru.evolenta.goods.repository.GoodRepository" relationship="TO_ONE">
+      <point x="0.0" y="-104.5" />
+      <point x="-103.96337402885695" y="375.75" />
+      <point x="-485.0987791342952" y="375.75" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="ru.evolenta.goods.controller.GoodController" target="ru.evolenta.goods.service.GoodService" relationship="TO_ONE">
+      <point x="0.0" y="-92.5" />
+      <point x="-497.5394006659267" y="987.0" />
+      <point x="-103.96337402885695" y="987.0" />
+      <point x="0.0" y="104.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Compact" zoom="0.8842001962708538" showDependencies="true" x="9.0" y="566.5" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Constructors</Category>
+    <Category>Fields</Category>
+    <Category>Inner Classes</Category>
+    <Category>Methods</Category>
+    <Category>Properties</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

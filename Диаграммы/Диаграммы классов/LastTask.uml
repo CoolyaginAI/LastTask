@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>C:/Users/KulyaginAI/IdeaProjects/LastTask</OriginalElement>
+  <nodes>
+    <node x="338.11635160932315" y="861.3272559378468">ru.evolenta.persons.PersonsApplicationTests</node>
+    <node x="-188.5424204217536" y="861.3272559378468">ru.evolenta.goods.GoodsApplicationTests</node>
+    <node x="281.8601411764705" y="2355.2095076581572">ru.evolenta.persons.model.ProductList</node>
+    <node x="-833.6289678135405" y="1114.3936736958935">ru.evolenta.productList.repository.ProductListRepository</node>
+    <node x="-167.0424204217536" y="721.5121220865692">ru.evolenta.goods.GoodsApplication</node>
+    <node x="-263.730795116537" y="465.9619968923417">ru.evolenta.orders_server.OrdersServerApplication</node>
+    <node x="374.11635160932315" y="1173.4865429522754">ru.evolenta.persons.repository.PersonRepository</node>
+    <node x="-203.5424204217536" y="1377.908657047725">ru.evolenta.goods.service.GoodService</node>
+    <node x="-724.2493140954493" y="2331.2095076581572">ru.evolenta.productList.model.Person</node>
+    <node x="-215.64883285238636" y="1926.0492368479474">ru.evolenta.goods.controller.GoodController</node>
+    <node x="-966.6289678135405" y="1819.6860528301897">ru.evolenta.productList.controller.ProductListController</node>
+    <node x="-843.6289678135406" y="983.4331564927854">ru.evolenta.productList.config.ProductListConfig</node>
+    <node x="-175.84660421753608" y="2355.2095076581572">ru.evolenta.productList.model.Good</node>
+    <node x="-159.5424204217536" y="1173.4865429522754">ru.evolenta.goods.repository.GoodRepository</node>
+    <node x="-724.2493140954493" y="2331.2095076581572">ru.evolenta.persons.model.Person</node>
+    <node x="352.11635160932315" y="1037.0906619311877">ru.evolenta.persons.config.PersonConfig</node>
+    <node x="281.8601411764705" y="2355.2095076581572">ru.evolenta.productList.model.ProductList</node>
+    <node x="359.61635160932315" y="721.5121220865692">ru.evolenta.persons.PersonsApplication</node>
+    <node x="-275.38004439511656" y="335.5522397336294">ru.evolenta.orders_server.OrdersServerApplicationTests</node>
+    <node x="-175.84660421753608" y="2355.2095076581572">ru.evolenta.goods.model.Good</node>
+    <node x="-187.5424204217536" y="1037.0906619311877">ru.evolenta.goods.config.GoodConfig</node>
+    <node x="336.6033695893452" y="1377.908657047725">ru.evolenta.persons.service.PersonService</node>
+    <node x="-915.1289678135405" y="1269.908657047725">ru.evolenta.productList.service.ProductListService</node>
+    <node x="-855.1289678135405" y="852.4726392896773">ru.evolenta.productList.ProductListApplicationTests</node>
+    <node x="266.4682122086572" y="1902.049236847947">ru.evolenta.persons.controller.PersonController</node>
+    <node x="-833.6289678135405" y="721.5121220865692">ru.evolenta.productList.ProductListApplication</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="ru.evolenta.productList.service.ProductListService" target="ru.evolenta.productList.repository.ProductListRepository" relationship="TO_ONE">
+      <point x="0.0" y="-212.5" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="ru.evolenta.persons.controller.PersonController" target="ru.evolenta.persons.service.PersonService" relationship="TO_ONE">
+      <point x="0.0" y="-104.5" />
+      <point x="514.4682122086572" y="1505.9154237513874" />
+      <point x="478.1033695893452" y="1505.9154237513874" />
+      <point x="0.0" y="104.5" />
+    </edge>
+    <edge source="ru.evolenta.goods.service.GoodService" target="ru.evolenta.goods.repository.GoodRepository" relationship="TO_ONE">
+      <point x="0.0" y="-104.5" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="ru.evolenta.productList.controller.ProductListController" target="ru.evolenta.productList.service.ProductListService" relationship="TO_ONE">
+      <point x="0.0" y="-152.5" />
+      <point x="0.0" y="212.5" />
+    </edge>
+    <edge source="ru.evolenta.goods.controller.GoodController" target="ru.evolenta.goods.service.GoodService" relationship="TO_ONE">
+      <point x="0.0" y="-92.5" />
+      <point x="-82.64883285238636" y="1534.7366315205331" />
+      <point x="-72.0424204217536" y="1534.7366315205331" />
+      <point x="0.0" y="104.5" />
+    </edge>
+    <edge source="ru.evolenta.persons.service.PersonService" target="ru.evolenta.persons.repository.PersonRepository" relationship="TO_ONE">
+      <point x="0.0" y="-104.5" />
+      <point x="478.1033695893452" y="559.75" />
+      <point x="478.1033695893452" y="559.75" />
+      <point x="10.487017980022074" y="16.305694117647135" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Compact" zoom="0.6599781071857186" showDependencies="true" x="12.00442708102105" y="2323.5984" />
+  <SelectedNodes>
+    <node>ru.evolenta.orders_server.OrdersServerApplicationTests</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Constructors</Category>
+    <Category>Fields</Category>
+    <Category>Inner Classes</Category>
+    <Category>Methods</Category>
+    <Category>Properties</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

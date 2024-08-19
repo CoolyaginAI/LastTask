@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>C:/Users/KulyaginAI/IdeaProjects/LastTask/orders-server</OriginalElement>
+  <nodes>
+    <node x="-487.0" y="-73.0">ru.evolenta.orders_server.OrdersServerApplication</node>
+    <node x="-488.5" y="67.0">ru.evolenta.orders_server.OrdersServerApplicationTests</node>
+  </nodes>
+  <notes />
+  <edges />
+  <settings layout="Hierarchic Compact" zoom="1.0" showDependencies="true" x="-347.0" y="41.0" />
+  <SelectedNodes>
+    <node>ru.evolenta.orders_server.OrdersServerApplication</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Constructors</Category>
+    <Category>Fields</Category>
+    <Category>Inner Classes</Category>
+    <Category>Methods</Category>
+    <Category>Properties</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
